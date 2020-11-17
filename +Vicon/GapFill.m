@@ -48,7 +48,7 @@ end
 
 %%
 gapTable = genGapTable(markerData);
-
+unFilledGaps = height(gapTable);
 if height(gapTable) == 0
     warning('There are no gaps in this file. Are you sure?')
 else
@@ -64,7 +64,7 @@ else
     spFills = 0;
     %h = progress(0);
     idx = 1;
-
+    
     % spline fill really short gaps
     while (idx<=height(gapTable) && gapTable.Length(idx) == 1 )
         markerData = Vicon.SplineFill(markerData, gapTable.Markers{idx}, gapTable.Start(idx), gapTable.End(idx));
